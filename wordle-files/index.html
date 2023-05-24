@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="index.js" defer></script>
+    <title>Word of the Day!</title>
+</head>
+
+<body>
+    <nav>
+        <h2>Word of The Day! Compete against your friends!</h2>
+    </nav>
+    <div id="end-game-container" class="hidden">
+        <div id="your-stats-header">
+            <h2>Your Stats</h2>
+        </div>
+        <div id="user-stats-grid">
+            <div id="attempted" class="stat-displays">
+                <h3>Attempted</h3>
+            </div>
+            <div id="solved" class="stat-displays">
+                <h3>Solved</h3>
+            </div>
+            <div id="failed" class="stat-displays">
+                <h3>Failed</h3>
+            </div>
+            <div id="total-guesses" class="stat-displays">
+                <h3>Total Guesses</h3>
+            </div>
+            <div id="average" class="stat-displays">
+                <h3>Average Guesses</h3>
+            </div>
+            <div id="streak" class="stat-displays">
+                <h3>Current Streak</h3>
+            </div>
+        </div>
+        <div id="access-code-container" class="">
+            <div id="access-code-buttons-container" class="access-code-headers">
+                <h3 id="access-h3">Do you have an access code?</h3>
+                <div id="access-buttons">
+                    <button id="has-access-code" class="access-code-buttons">Yes</button>
+                    <button id="no-access-code" class="access-code-buttons">No</button>
+                </div>
+            </div>
+            <div id="access-code-input-container" class="hidden">
+                <label id="access-code-label" for="access-code-input">Please enter your access code:</label>
+                <input type="text" id="access-code-input" autocomplete="off">
+                <button type="submit" id="submit-access-code" class="access-button">Submit</button>
+            </div>
+            <div id="name-input-or-failed" class="hidden">
+                <label for="access-code-input">Please enter your name:</label>
+                <input type="text" id="submit-name-input">
+                <button type="submit" id="submit-name" class="access-button">Submit</button>
+            </div>
+        </div>
+        <div id="leader-board-header" class="hidden">
+            <h3>Leaderboard</h3>
+            <p>(Ranked by Average Guesses to Solve)</p>
+        </div>
+        <div id="leader-board-grid" class="hidden">
+            <div id="row-1-col-1" class="leader-board-grid-boxes">
+                <h5>User</h5>
+            </div>
+            <div id="average" class="leader-board-grid-boxes-attempted">
+                <h5>Avg.<br>Attempts</h5>
+            </div>
+            <div id="row-1-col-3" class="leader-board-grid-boxes">
+                <h5>Solved</h5>
+            </div>
+            <div id="row-1-col-4" class="leader-board-grid-boxes">
+                <h5>Streak</h5>
+            </div>
+            <div id="row-1-col-1" class="leader-board-grid-boxes first-place user-box">
+
+            </div>
+            <div id="row-2-col-2" class="leader-board-grid-boxes first-place user-box">
+
+            </div>
+            <div id="row-2-col-3" class="leader-board-grid-boxes first-place user-box">
+
+            </div>
+            <div id="row-2-col-4" class="leader-board-grid-boxes first-place user-box">
+
+            </div>
+            <div id="row-3-col-1" class="leader-board-grid-boxes second-place user-box">
+
+            </div>
+            <div id="row-3-col-2" class="leader-board-grid-boxes second-place user-box">
+
+            </div>
+            <div id="row-3-col-3" class="leader-board-grid-boxes second-place user-box">
+
+            </div>
+            <div id="row-3-col-4" class="leader-board-grid-boxes second-place user-box">
+
+            </div>
+            <div id="row-4-col-1" class="leader-board-grid-boxes third-place user-box">
+
+            </div>
+            <div id="row-4-col-2" class="leader-board-grid-boxes third-place user-box">
+
+            </div>
+            <div id="row-4-col-3" class="leader-board-grid-boxes third-place user-box">
+
+            </div>
+            <div id="row-4-col-4" class="leader-board-grid-boxes third-place user-box">
+
+            </div>
+            <div id="row-5-col-1" class="leader-board-grid-boxes fourth-place user-box">
+
+            </div>
+            <div id="row-5-col-2" class="leader-board-grid-boxes fourth-place user-box">
+
+            </div>
+            <div id="row-5-col-3" class="leader-board-grid-boxes fourth-place user-box">
+
+            </div>
+            <div id="row-5-col-4" class="leader-board-grid-boxes fourth-place user-box">
+
+            </div>
+            <div id="row-6-col-1" class="leader-board-grid-boxes fifth-place user-box">
+
+            </div>
+            <div id="row-6-col-2" class="leader-board-grid-boxes fifth-place user-box">
+
+            </div>
+            <div id="row-6-col-3" class="leader-board-grid-boxes fifth-place user-box">
+
+            </div>
+            <div id="row-6-col-4" class="leader-board-grid-boxes fifth-place user-box">
+
+            </div>
+            <div id="row-7-col-1" class="leader-board-grid-boxes sixth-place user-box">
+
+            </div>
+            <div id="row-7-col-2" class="leader-board-grid-boxes sixth-place user-box">
+
+            </div>
+            <div id="row-7-col-3" class="leader-board-grid-boxes sixth-place user-box">
+
+            </div>
+            <div id="row-7-col-4" class="leader-board-grid-boxes sixth-place user-box">
+
+            </div>
+        </div>
+        <div id="solved-countdown" class="hidden">
+            <h4>You completed today's word, the next word will be available in:</h4>
+            <h4 id="time-left"></h4>
+        </div>
+    </div>
+    <div id="main-game-container">
+        <div id="information-container">
+            <h3 id="not-a-word-warning">placeholder</h3>
+        </div>
+        <div id="main-tile-board">
+            <div id="first-row" class="tile-rows">
+                <div id="first-row-first-tile" class="standalone-tile first-row-tiles">
+                    <p></p>
+                </div>
+                <div id="first-row-second-tile" class="standalone-tile first-row-tiles">
+                    <p></p>
+                </div>
+                <div id="first-row-third-tile" class="standalone-tile first-row-tiles">
+                    <p></p>
+                </div>
+                <div id="first-row-fourth-tile" class="standalone-tile first-row-tiles">
+                    <p></p>
+                </div>
+                <div id="first-row-fifth-tile" class="standalone-tile first-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+            <div id="second-row" class="tile-rows">
+                <div id="second-row-first-tile" class="standalone-tile second-row-tiles">
+                    <p></p>
+                </div>
+                <div id="second-row-second-tile" class="standalone-tile second-row-tiles">
+                    <p></p>
+                </div>
+                <div id="second-row-third-tile" class="standalone-tile second-row-tiles">
+                    <p></p>
+                </div>
+                <div id="second-row-fourth-tile" class="standalone-tile second-row-tiles ">
+                    <p></p>
+                </div>
+                <div id="second-row-fifth-tile" class="standalone-tile second-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+            <div id="third-row" class="tile-rows">
+                <div id="third-row-first-tile" class="standalone-tile third-row-tiles">
+                    <p></p>
+                </div>
+                <div id="third-row-second-tile" class="standalone-tile third-row-tiles">
+                    <p></p>
+                </div>
+                <div id="third-row-third-tile" class="standalone-tile third-row-tiles">
+                    <p></p>
+                </div>
+                <div id="third-row-fourth-tile" class="standalone-tile third-row-tiles">
+                    <p></p>
+                </div>
+                <div id="third-row-fifth-tile" class="standalone-tile third-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+            <div id="fourth-row" class="tile-rows">
+                <div id="fourth-row-first-tile" class="standalone-tile fourth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fourth-row-second-tile" class="standalone-tile fourth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fourth-row-third-tile" class="standalone-tile fourth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fourth-row-fourth-tile" class="standalone-tile fourth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fourth-row-fifth-tile" class="standalone-tile fourth-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+            <div id="fifth-row" class="tile-rows">
+                <div id="fifth-row-first-tile" class="standalone-tile fifth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fifth-row-second-tile" class="standalone-tile fifth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fifth-row-third-tile" class="standalone-tile fifth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fifth-row-fourth-tile" class="standalone-tile fifth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="fifth-row-fifth-tile" class="standalone-tile fifth-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+            <div id="sixth-row" class="tile-rows">
+                <div id="sixth-row-first-tile" class="standalone-tile sixth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="sixth-row-second-tile" class="standalone-tile sixth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="sixth-row-third-tile" class="standalone-tile sixth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="sixth-row-fourth-tile" class="standalone-tile sixth-row-tiles">
+                    <p></p>
+                </div>
+                <div id="sixth-row-fifth-tile" class="standalone-tile sixth-row-tiles">
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="keyboard-container">
+            <div id="keyboard-first-row">
+                <button id="q-key-keyboard" class="letter-keys">
+                    <p>Q</p>
+                </button>
+                <button id="w-key-keyboard" class="letter-keys">
+                    <p>W</p>
+                </button>
+                <button id="e-key-keyboard" class="letter-keys">
+                    <p>E</p>
+                </button>
+                <button id="r-key-keyboard" class="letter-keys">
+                    <p>R</p>
+                </button>
+                <button id="t-key-keyboard" class="letter-keys">
+                    <p>T</p>
+                </button>
+                <button id="y-key-keyboard" class="letter-keys">
+                    <p>Y</p>
+                </button>
+                <button id="u-key-keyboard" class="letter-keys">
+                    <p>U</p>
+                </button>
+                <button id="i-key-keyboard" class="letter-keys">
+                    <p>I</p>
+                </button>
+                <button id="o-key-keyboard" class="letter-keys">
+                    <p>O</p>
+                </button>
+                <button id="p-key-keyboard" class="letter-keys">
+                    <p>P</p>
+                </button>
+
+
+            </div>
+            <div id="keyboard-second-row">
+                <button id="a-key-keyboard" class="letter-keys">
+                    <p>A</p>
+                </button>
+                <button id="s-key-keyboard" class="letter-keys">
+                    <p>S</p>
+                </button>
+                <button id="d-key-keyboard" class="letter-keys">
+                    <p>D</p>
+                </button>
+                <button id="f-key-keyboard" class="letter-keys">
+                    <p>F</p>
+                </button>
+                <button id="g-key-keyboard" class="letter-keys">
+                    <p>G</p>
+                </button>
+                <button id="h-key-keyboard" class="letter-keys">
+                    <p>H</p>
+                </button>
+                <button id="j-key-keyboard" class="letter-keys">
+                    <p>J</p>
+                </button>
+                <button id="k-key-keyboard" class="letter-keys">
+                    <p>K</p>
+                </button>
+                <button id="l-key-keyboard" class="letter-keys">
+                    <p>L</p>
+                </button>
+
+            </div>
+            <div id="keyboard-third-row">
+                <button id="enter-key" class="special-keys-keyboard">
+                    <p>Enter</p>
+                </button>
+                <button id="z-key-keyboard" class="letter-keys">
+                    <p>Z</p>
+                </button>
+                <button id="x-key-keyboard" class="letter-keys">
+                    <p>X</p>
+                </button>
+                <button id="c-key-keyboard" class="letter-keys">
+                    <p>C</p>
+                </button>
+                <button id="v-key-keyboard" class="letter-keys">
+                    <p>V</p>
+                </button>
+                <button id="b-key-keyboard" class="letter-keys">
+                    <p>B</p>
+                </button>
+                <button id="n-key-keyboard" class="letter-keys">
+                    <p>N</p>
+                </button>
+                <button id="m-key-keyboard" class="letter-keys">
+                    <p>M</p>
+                </button>
+                <button id="delete-key" class="special-keys-keyboard">
+                    <p>Del</p>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
